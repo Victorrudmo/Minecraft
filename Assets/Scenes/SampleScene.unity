@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alto: 10
-  ancho: 10
-  largo: 10
+  ancho: 50
+  largo: 50
   cubo: {fileID: 3925605790176977943, guid: 61f90125bbe57dc41a46ab03bb194f5d, type: 3}
+  detail: 30
+  seed: 1414
 --- !u!4 &423556532
 Transform:
   m_ObjectHideFlags: 0

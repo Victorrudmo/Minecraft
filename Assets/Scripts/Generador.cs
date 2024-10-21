@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Generador : MonoBehaviour
@@ -11,8 +12,12 @@ public class Generador : MonoBehaviour
     public GameObject cubo;
     public GameObject[,,] map;
 
+    public float detail;
+    public int seed;
+
     void Start()
     {
+        /*
         gen = this;
         map = new GameObject[ancho, alto, largo];
         
@@ -20,6 +25,9 @@ public class Generador : MonoBehaviour
         GenerarPiramide();
         GenerarCubo();
         GenerarPendiente();
+        */
+
+        GenerateMap();
     }
 
     void Update()
@@ -98,6 +106,18 @@ public class Generador : MonoBehaviour
                             cuboComponent.z = k;
                         }
                     }
+                }
+            }
+        }
+    }
+
+    public void GenerateMap(){
+        for(int i=0; i<ancho; i++){
+            for(int j=0; j<largo; j++){
+
+                alto = (int)(Mathf.PerlinNoise((i/2+seed)/detail, (j/2+seed)/detail)*detail);
+                for(int k=0; k<alto; k++){
+                    Instantiate(cubo, new Vector3(i,k,j), Quaternion.identity);
                 }
             }
         }
